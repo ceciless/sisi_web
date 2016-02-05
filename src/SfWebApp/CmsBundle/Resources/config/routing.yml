@@ -1,0 +1,10 @@
+#sf_web_app_cms_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: SfWebAppCmsBundle:Default:index }
+
+sisi_web_cms_homepage:
+    path:     /
+    defaults: { _controller: SfWebAppCmsBundle:Default:index }
+
+
+

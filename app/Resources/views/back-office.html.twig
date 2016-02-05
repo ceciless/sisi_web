@@ -1,0 +1,64 @@
+{# add navigation current nav mark #}
+{% set route = app.request.get('_route') %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Back-Office Velo Test{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/css/libs/bootstrap.min.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/css/libs/bootstrap-theme.min.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/css/libs/jquery-ui.min.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/css/libs/jquery-ui.structure.min.css')}}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/css/libs/backoffice.css')}}" type="text/css" />
+
+</head>
+<body>
+<div class="container">
+
+    {% block header %}{% endblock %}
+
+    {% block flash %}
+
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+
+    <!-- container content - BEGIN -->
+    <div class="container container-content">
+        <div id="layout-view" class="view view-villa-all">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    <!-- container content - END -->
+
+    {% block footer %}{% endblock footer %}
+
+</div>
+
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/js/libs/jquery-1.12.0.min.js')}}" type="text/script" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/js/libs/jquery-ui.min.js')}}" type="text/cscript" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappbackoffice/js/libs/jquery-ui.min.js')}}" type="text/script" />
+
+    <script>
+        // get locale
+        locale = "{{ app.request.locale }}";
+        // get route
+        route = "{{ route }}";
+    </script>
+
+
+</body>
+</html>

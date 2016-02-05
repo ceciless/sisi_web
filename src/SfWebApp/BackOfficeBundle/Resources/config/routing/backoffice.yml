@@ -1,0 +1,5 @@
+sisi_web_backofficebundle_home:
+    pattern: /
+    defaults: { _controller: "SfWebAppBackOfficeBundle:Default:index" }
+    requirements:
+        _method: GET

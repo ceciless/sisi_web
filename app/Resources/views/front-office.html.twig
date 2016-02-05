@@ -1,0 +1,53 @@
+{# add navigation current nav mark #}
+{% set route = app.request.get('_route') %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Front-Office D&i{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/bootstrap.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/bootstrap-theme.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery-ui.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery-ui.structure.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery.dataTables.min.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/front-office.css') }}" type="text/css" />
+
+
+</head>
+<body>
+<div class="container">
+    {% block header %}{% endblock %}
+    {% block flash %}
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div>
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    {% endblock %}
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock footer %}
+</div>
+{% block javascripts %}
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery-1.12.0.min.js') }}" type="text/script" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery-ui.min.js') }}" type="text/script" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/bootstrap.min.js') }}" type="text/script" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/jquery.dataTables.min.js') }}" type="text/script" />
+    <link rel="stylesheet" href="{{ asset('bundles/sfwebappfrontoffice/css/libs/datatables-fo.js') }}" type="text/script" />
+    <script>
+        // get locale
+        locale = "{{ app.request.locale }}";
+        // get route
+        route = "{{ route }}";
+    </script>
+{% endblock %}
+
+</body>
+</html>

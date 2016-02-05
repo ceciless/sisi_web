@@ -1,0 +1,13 @@
+sisi_web_back_office_security_login:
+    path:     /login
+    defaults: { _controller: SfWebAppBackOfficeBundle:Security:login }
+
+sisi_web_back_office_security_check:
+    path:     /login-check
+    defaults: { _controller: SfWebAppBackOfficeBundle:Security:check }
+    requirements:
+        _method: POST
+
+sisi_web_back_office_security_logout:
+    path:     /logout
+    defaults: { _controller: SfWebAppBackOfficeBundle:Security:logout }
